@@ -24,3 +24,5 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+    - name: Build Docker
+      run: docker build . --file Dockerfile --tag ghactionservice:prod
