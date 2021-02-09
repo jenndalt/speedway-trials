@@ -26,3 +26,15 @@ jobs:
       run: ./gradlew build
     - name: Build Docker
       run: docker build . --file Dockerfile --tag ghactionservice:prod
+      
+   
+    - name: Build, Push and Deploy to Heroku #set the whatever name you want to this step
+      id: heroku
+      uses: jctaveras/heroku-deploy@v1.0.0  # use the latest version of the action
+      with:
+          email: ${{ secrets.HEROKU_EMAIL }} # your heroku email
+          api_key: ${{ secrets.API_KEY }} # your  heroku api key
+          app_name: ${{ secrets.APP_NAME }} # you aplication name
+          dockerfile_path: '' # set the path to the folder wher the Dokerfile is located
+          options: '' # Docker Build Options
+          formation: '' # Docker Dyno Formation. By default is web
