@@ -1,5 +1,6 @@
 package com.galvanize.speedwaytrials.service;
 
+import com.galvanize.speedwaytrials.model.Driver;
 import com.galvanize.speedwaytrials.model.RaceCar;
 import com.galvanize.speedwaytrials.repository.RaceCarRepository;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class RaceCarService {
     }
 
     public void seedData() {
-        RaceCar raceCar = new RaceCar("The Condo", "Corvette", "2019", "",  "AVAILABLE", 189);
+        RaceCar raceCar = new RaceCar("The Condo", "Corvette", "2019", new Driver(),  "AVAILABLE", 189);
         raceCarRepository.save(raceCar);
     }
 }

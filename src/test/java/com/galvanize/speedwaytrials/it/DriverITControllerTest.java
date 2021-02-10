@@ -12,22 +12,22 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class RaceCarControllerTest {
-
+public class DriverITControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    void getRaceCars() throws Exception {
-
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/racecars"))
+    void getAllDrivers() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/drivers"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.[0].id").exists())
-                .andExpect(jsonPath("$.[0].nickname").value("The Condo"))
-                .andExpect(jsonPath("$.[0].model").value("Corvette"))
-                .andExpect(jsonPath("$.[0].driver").exists())
-                .andExpect(jsonPath("$.[0].status").value("AVAILABLE"))
-                .andExpect(jsonPath("$.[0].top_speed").value("189"));
+                .andExpect(jsonPath("$.[0].first-name").value("Maria"))
+                .andExpect(jsonPath("$.[0].last-name").value("Lopez"))
+                .andExpect(jsonPath("$.[0].age").value("22"))
+                .andExpect(jsonPath("$.[0].nickname").value("The Blaze"))
+                .andExpect(jsonPath("$.[0].raceCarList").exists())
+                .andExpect(jsonPath("$.[0].wins").value("4"))
+                .andExpect(jsonPath("$.[0].losses").value("1"))
+        ;
     }
-
 }
