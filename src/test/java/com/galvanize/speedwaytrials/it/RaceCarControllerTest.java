@@ -24,7 +24,7 @@ public class RaceCarControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.[0].id").exists())
                 .andExpect(jsonPath("$.[0].nickname").value("The Condo"))
-                .andExpect(jsonPath("$.[0].model").value("The Condo"))
+                .andExpect(jsonPath("$.[0].model").value("Corvette"))
                 .andExpect(jsonPath("$.[0].owner").exists())
                 .andExpect(jsonPath("$.[0].status").value("AVAILABLE"))
                 .andExpect(jsonPath("$.[0].top_speed").value("189"));
