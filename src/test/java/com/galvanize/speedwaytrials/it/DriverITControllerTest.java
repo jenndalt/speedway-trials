@@ -25,7 +25,7 @@ public class DriverITControllerTest {
                 .andExpect(jsonPath("$.[0].last-name").value("Lopez"))
                 .andExpect(jsonPath("$.[0].age").value("22"))
                 .andExpect(jsonPath("$.[0].nickname").value("The Blaze"))
-                .andExpect(jsonPath("$.[0].cars").exists())
+                .andExpect(jsonPath("$.[0].raceCarList").exists())
                 .andExpect(jsonPath("$.[0].wins").value("4"))
                 .andExpect(jsonPath("$.[0].losses").value("1"))
         ;
