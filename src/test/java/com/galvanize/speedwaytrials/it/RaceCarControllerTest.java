@@ -39,11 +39,12 @@ public class RaceCarControllerTest {
     @Test
     void addCare() throws Exception {
         RaceCar raceCar = new RaceCar("The Condo", "Corvette", "2019", new Driver(),  "AVAILABLE", 189);
-        mockMvc.perform(MockMvcRequestBuilders.post("/v1/api/racecars")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/racecars")
                 .content(objectMapper.writeValueAsString(raceCar))
                 .contentType(MediaType.APPLICATION_JSON)
         )
-                .andExpect(status().isCreated());
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.id").exists());
     }
 
 }

@@ -25,7 +25,7 @@ public class RaceCarService {
         raceCarRepository.save(raceCar);
     }
 
-    public void addCar(RaceCar raceCar) {
-        raceCarRepository.save(raceCar);
+    public RaceCar addCar(RaceCar raceCar) {
+        return raceCarRepository.save(raceCar);
     }
 }
