@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class RaceCarServiceTest {
@@ -28,5 +28,13 @@ class RaceCarServiceTest {
         when(raceCarRepository.findAll()).thenReturn(Arrays.asList(raceCar, raceCar, raceCar));
         List<RaceCar> carList = carService.getAllRaceCars();
         assertEquals(3, carList.size());
+    }
+
+    @Test
+    void addACar() {
+        RaceCar raceCar = new RaceCar();
+        when(raceCarRepository.save(raceCar)).thenReturn(raceCar);
+        carService.addCar(raceCar);
+        verify(raceCarRepository, times(1)).save(raceCar);
     }
 }
