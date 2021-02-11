@@ -24,4 +24,8 @@ public class RaceCarService {
         RaceCar raceCar = new RaceCar("The Condo", "Corvette", "2019", new Driver(),  "AVAILABLE", 189);
         raceCarRepository.save(raceCar);
     }
+
+    public void addCar(RaceCar raceCar) {
+        raceCarRepository.save(raceCar);
+    }
 }

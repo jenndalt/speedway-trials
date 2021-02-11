@@ -2,12 +2,13 @@ package com.galvanize.speedwaytrials.controller;
 
 import com.galvanize.speedwaytrials.model.RaceCar;
 import com.galvanize.speedwaytrials.service.RaceCarService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/api/v1/racecars")
 public class RaceCarController {
     private final RaceCarService raceCarService;
 
@@ -15,8 +16,14 @@ public class RaceCarController {
         this.raceCarService = raceCarService;
     }
 
-    @GetMapping("/api/v1/racecars")
+    @GetMapping
     public List<RaceCar> getRaceCars() {
         return raceCarService.getAllRaceCars();
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void postRaceCar(@RequestBody RaceCar raceCar) {
+        raceCarService.addCar(raceCar);
     }
 }
